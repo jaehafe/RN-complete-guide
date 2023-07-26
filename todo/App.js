@@ -7,6 +7,8 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import LoginScreen from './screens/LoginScreen';
 
+import app from './fierbase';
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
