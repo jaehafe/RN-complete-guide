@@ -1,4 +1,5 @@
 import {
+  Alert,
   StyleSheet,
   Text,
   TextInput,
@@ -11,6 +12,8 @@ import TodoListIcon from '../assets/list.svg';
 
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 
+import Toast from 'react-native-toast-message';
+
 const LoginScreen = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
@@ -20,8 +23,19 @@ const LoginScreen = () => {
     try {
       const user = await createUserWithEmailAndPassword(auth, email, password);
       console.log('user>>', user);
+      Toast.show({
+        type: 'success',
+        text1: '회원가입 성공',
+        text2: `${email}으로 가입되었습니다.😀`,
+      });
     } catch (error) {
       console.error(error.message);
+      Alert.alert(
+        '회원가입 도중에 문제가 발생했습니다.',
+        error.message,
+        [{ text: '닫기', onPress: () => console.log('닫기') }],
+        { cancelable: true }
+      );
     }
   };
   const handleLogin = async () => {};
@@ -45,12 +59,12 @@ const LoginScreen = () => {
         />
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={handleSignUp}>
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>로그인</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.button, styles.buttonOutline]}
-          onPress={handleLogin}
+          onPress={handleSignUp}
         >
           <Text style={styles.buttonOutlineText}>회원가입</Text>
         </TouchableOpacity>
