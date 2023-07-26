@@ -9,9 +9,22 @@ import React, { useState } from 'react';
 
 import TodoListIcon from '../assets/list.svg';
 
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+
 const LoginScreen = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+  const auth = getAuth();
+
+  const handleSignUp = async () => {
+    try {
+      const user = await createUserWithEmailAndPassword(auth, email, password);
+      console.log('user>>', user);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+  const handleLogin = async () => {};
 
   return (
     <View style={styles.container}>
@@ -32,10 +45,13 @@ const LoginScreen = () => {
         />
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleSignUp}>
           <Text style={styles.buttonText}>로그인</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.buttonOutline]}>
+        <TouchableOpacity
+          style={[styles.button, styles.buttonOutline]}
+          onPress={handleLogin}
+        >
           <Text style={styles.buttonOutlineText}>회원가입</Text>
         </TouchableOpacity>
       </View>
