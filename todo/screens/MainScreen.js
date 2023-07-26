@@ -5,23 +5,55 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import React from 'react';
+
 import InputForm from '../components/InputForm';
 import TodoItem from '../components/TodoItem';
 
+import LogOutButton from '../assets/logout.svg';
+
 import { useSelector } from 'react-redux';
+
+import { getAuth, signOut } from 'firebase/auth';
+import { useNavigation } from '@react-navigation/native';
+
+import Toast from 'react-native-toast-message';
 
 const MainScreen = () => {
   const todos = useSelector((state) => state.todo.todos);
   const todoTasks = todos.filter((item) => item.state === 'todo');
   const completedTasks = todos.filter((item) => item.state === 'done');
 
+  const auth = getAuth();
+
+  const navigation = useNavigation();
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      Toast.show({
+        type: 'success',
+        text1: '로그아웃 성공',
+        // text2: `${email}으로 가입되었습니다.😀`,
+      });
+      navigation.replace('Login');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar />
-      <Text style={styles.pageTitle}>Todo App</Text>
+      <View style={styles.headerContainer}>
+        <Text style={styles.pageTitle}>Todo App</Text>
+        <TouchableOpacity style={styles.logOutButton} onPress={handleLogout}>
+          <LogOutButton />
+        </TouchableOpacity>
+      </View>
       <View style={styles.listView}>
         <Text style={styles.listTitle}>할 일</Text>
         {todoTasks.length !== 0 ? (
@@ -89,5 +121,16 @@ const styles = StyleSheet.create({
     fontSize: 15,
     lineHeight: 20,
     color: '#737373',
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  logOutButton: {
+    marginBottom: 25,
+    marginRight: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
