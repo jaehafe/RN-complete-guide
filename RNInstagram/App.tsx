@@ -5,6 +5,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
+import Ionic from 'react-native-vector-icons/Ionicons';
+
 import Home from './src/screens/Home';
 import Search from './src/screens/Search';
 import Activity from './src/screens/Activity';
@@ -26,6 +28,24 @@ const App = () => {
           headerShown: false,
           tabBarStyle: {
             height: 70,
+          },
+          tabBarIcon: ({focused, size, color}) => {
+            let iconName = '';
+
+            if (route.name === 'Home') {
+              iconName = focused ? 'home-sharp' : 'home-outline';
+              size = focused ? size + 8 : size + 2;
+            } else if (route.name === 'Search') {
+              // iconName = focused ? 'search' : 'ios-search-outline';
+              iconName = focused ? 'home-sharp' : 'home-outline';
+            } else if (route.name === 'Activity') {
+              // iconName = focused ? 'ios-heart' : 'ios-heart-outline';
+              iconName = focused ? 'home-sharp' : 'home-outline';
+            } else if (route.name === 'Profile') {
+              iconName = focused ? 'person-circle' : 'person-outline';
+            }
+
+            return <Ionic name={iconName} size={size} color={color} />;
           },
         })}>
         <Tab.Screen name="Home" component={Home} />
