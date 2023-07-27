@@ -23,6 +23,7 @@ const Status = ({route, navigation}: any) => {
 
   const progress = useRef(new Animated.Value(0)).current;
 
+  // 5초 후 돌아가기
   useEffect(() => {
     let timer = setTimeout(() => {
       navigation.goBack();
@@ -33,6 +34,7 @@ const Status = ({route, navigation}: any) => {
     };
   }, []);
 
+  // progress bar 5초
   useEffect(() => {
     Animated.timing(progress, {
       // Will change progress value to 5 in 5 seconds
