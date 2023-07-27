@@ -37,10 +37,9 @@ const App = () => {
               size = focused ? size + 8 : size + 2;
             } else if (route.name === 'Search') {
               // iconName = focused ? 'search' : 'ios-search-outline';
-              iconName = focused ? 'home-sharp' : 'home-outline';
+              iconName = focused ? 'search' : 'search-outline';
             } else if (route.name === 'Activity') {
-              // iconName = focused ? 'ios-heart' : 'ios-heart-outline';
-              iconName = focused ? 'home-sharp' : 'home-outline';
+              iconName = focused ? 'heart' : 'heart-outline';
             } else if (route.name === 'Profile') {
               iconName = focused ? 'person-circle' : 'person-outline';
             }
