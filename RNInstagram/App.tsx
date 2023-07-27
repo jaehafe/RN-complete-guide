@@ -1,6 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 
+import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
@@ -8,7 +9,6 @@ import Home from './src/screens/Home';
 import Search from './src/screens/Search';
 import Activity from './src/screens/Activity';
 import Profile from './src/screens/Profile';
-import {NavigationContainer} from '@react-navigation/native';
 import Status from './src/screens/Status';
 import FriendProfile from './src/screens/FriendProfile';
 import EditProfile from './src/screens/EditProfile';
