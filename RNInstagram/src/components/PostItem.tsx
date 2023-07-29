@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 import React, {useState} from 'react';
+
 import {IPostInfoData} from './Posts';
 
 import Feather from 'react-native-vector-icons/Feather';
