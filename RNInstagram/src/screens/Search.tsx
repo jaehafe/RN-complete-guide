@@ -7,6 +7,8 @@ import {
   Text,
   View,
   Image,
+  Dimensions,
+  Platform,
 } from 'react-native';
 import React, {useState} from 'react';
 
@@ -15,6 +17,13 @@ import SearchContent from '../components/SearchContent';
 
 import Ionic from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
+
+import {getStatusBarHeight} from 'react-native-status-bar-height';
+const statusBarHeight = Platform.OS === 'ios' ? getStatusBarHeight() : 0;
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+console.log('windowWidth>>', windowWidth, windowHeight);
 
 const Search = () => {
   const [image, setImage] = useState<ImageSourcePropType | null>(null);
@@ -71,6 +80,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: 'rgba(52,52,52, 0.8)',
+    top: Platform.OS === 'ios' ? statusBarHeight : 0,
   },
   modalWrapper: {
     position: 'absolute',
@@ -79,9 +89,8 @@ const styles = StyleSheet.create({
     height: 465,
     borderRadius: 15,
     zIndex: 1,
-    top: '50%', // 화면 세로 방향의 중앙 위치에서부터
-    left: '5%', // 왼쪽으로 5% 이동한 위치에
-    transform: [{translateY: -232.5}], // 위로 50% 이동 (height의 절반)
+    top: windowHeight / 6, // 화면 세로 방향의 중앙 위치에서부터
+    left: windowWidth / 18, // 왼쪽으로 5% 이동한 위치에
   },
   imgOwnerInfoWrapper: {
     flexDirection: 'row',
