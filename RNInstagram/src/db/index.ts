@@ -19,7 +19,7 @@ export const FriendsProfileData: IFriendsProfileData[] = [
     posts: 30,
     followers: 31,
     following: 44,
-    follow: false,
+    follow: true,
   },
   {
     name: 'javascript',
@@ -37,7 +37,7 @@ export const FriendsProfileData: IFriendsProfileData[] = [
     posts: 21,
     followers: 7886,
     following: 32,
-    follow: false,
+    follow: true,
   },
   {
     name: 'angular',
@@ -55,7 +55,7 @@ export const FriendsProfileData: IFriendsProfileData[] = [
     posts: 56,
     followers: 6542,
     following: 43,
-    follow: false,
+    follow: true,
   },
   {
     name: 'go',
@@ -64,7 +64,7 @@ export const FriendsProfileData: IFriendsProfileData[] = [
     posts: 452,
     followers: '564k',
     following: 31,
-    follow: false,
+    follow: true,
   },
   {
     name: 'nextjs',
@@ -91,7 +91,7 @@ export const FriendsProfileData: IFriendsProfileData[] = [
     posts: 111,
     followers: 11223,
     following: 1,
-    follow: false,
+    follow: true,
   },
   {
     name: 'deno',
@@ -127,6 +127,6 @@ export const FriendsProfileData: IFriendsProfileData[] = [
     posts: 533,
     followers: 64322,
     following: 123,
-    follow: false,
+    follow: true,
   },
 ];

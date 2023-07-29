@@ -18,16 +18,18 @@ const Activity = () => {
         <ActivityThisWeek />
         {/* ActivityPrevious */}
         <Text style={styles.previousActivityText}>이전 활동</Text>
-        {FriendsProfileData.slice(3, 6).map(
-          (data: IFriendsProfileData, index) => (
-            <ActivityPrevious data={data} key={index} />
-          ),
-        )}
+        {FriendsProfileData &&
+          FriendsProfileData.slice(3, 6).map(
+            (data: IFriendsProfileData, index) => (
+              <ActivityPrevious data={data} key={index} />
+            ),
+          )}
         {/* ActivityRecommend */}
         <Text style={styles.activityRecommendText}>회원님을 위한 추천</Text>
-        {FriendsProfileData.slice(6, 12).map((data, index) => (
-          <ActivityRecommend data={data} key={index} />
-        ))}
+        {FriendsProfileData &&
+          FriendsProfileData.slice(6, 12).map((data, index) => (
+            <ActivityRecommend data={data} key={index} />
+          ))}
       </ScrollView>
     </SafeAreaView>
   );
@@ -37,7 +39,7 @@ export default Activity;
 
 const styles = StyleSheet.create({
   container: {
-    width: '200%',
+    width: '100%',
     backgroundColor: 'white',
   },
   titleText: {
