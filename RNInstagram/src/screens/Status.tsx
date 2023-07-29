@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     // marginTop: Platform.OS === 'ios' ? statusBarHeight : 0,
     marginTop: statusBarHeight,
     height: 3,
-    width: '95%',
+    width: '100%',
     borderWidth: 1,
     backgroundColor: 'gray',
     position: 'absolute',
