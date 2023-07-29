@@ -22,6 +22,13 @@ const Status = ({route, navigation}: any) => {
   console.log('image>>', image);
 
   const progress = useRef(new Animated.Value(0)).current;
+  const progressAnimation = progress.interpolate({
+    inputRange: [0, 5], // progress의 입력 범위
+    outputRange: ['0%', '100%'], // progress에 대응하는 출력 범위
+  });
+
+  console.log('progressAnimation', progressAnimation);
+  console.log('statusBarHeight>>>', statusBarHeight);
 
   // 5초 후 돌아가기
   useEffect(() => {
@@ -44,12 +51,6 @@ const Status = ({route, navigation}: any) => {
     }).start();
   }, []);
 
-  const progressAnimation = progress.interpolate({
-    inputRange: [0, 5],
-    outputRange: ['0%', '100%'],
-  });
-  console.log('progressAnimation', progressAnimation);
-
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor="black" barStyle="light-content" />
@@ -60,23 +61,9 @@ const Status = ({route, navigation}: any) => {
       </View>
       <View style={styles.headerContainer}>
         <View style={styles.userAvatar}>
-          <Image
-            source={image}
-            style={{
-              borderRadius: 100,
-              backgroundColor: 'orange',
-              resizeMode: 'cover',
-              width: '92%',
-              height: '92%',
-            }}
-          />
+          <Image source={image} style={styles.userAvatarImage} />
         </View>
-        <View
-          style={{
-            justifyContent: 'space-between',
-            flexDirection: 'row',
-            width: '100%',
-          }}>
+        <View style={styles.storyMainImage}>
           <Text style={styles.userNameText}>{name}</Text>
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Ionic name="close" style={styles.closeIcon} />
@@ -151,6 +138,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     marginVertical: 10,
+    width: '100%',
+  },
+  userAvatarImage: {
+    borderRadius: 100,
+    backgroundColor: 'orange',
+    resizeMode: 'cover',
+    width: '92%',
+    height: '92%',
+  },
+  storyMainImage: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
     width: '100%',
   },
 });
