@@ -17,7 +17,7 @@ const postInfo = [
     postPersonImage: require('../../assets/images/userProfile.jpeg'),
     postImage: require('../../assets/images/post1.jpeg'),
     likes: 765,
-    isLiked: false,
+    isLiked: true,
   },
   {
     postAuthor: 'Tonny',

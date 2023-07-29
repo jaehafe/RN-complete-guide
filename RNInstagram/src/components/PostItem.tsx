@@ -1,14 +1,20 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, {useState} from 'react';
 import {IPostInfoData} from './Posts';
 
 import Feather from 'react-native-vector-icons/Feather';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Ionic from 'react-native-vector-icons/Ionicons';
 
 interface IPostItem {
   data: IPostInfoData;
 }
 
 const PostItem = ({data}: IPostItem) => {
+  const [like, setLike] = useState(data.isLiked);
+
+  console.log('like>>>', like);
+
   return (
     <View style={styles.postContainer}>
       {/* Post Header */}
@@ -27,6 +33,27 @@ const PostItem = ({data}: IPostItem) => {
       {/* Post Image */}
       <View style={styles.postImageContainer}>
         <Image source={data.postImage} style={styles.postImage} />
+      </View>
+      {/* Post Action */}
+      <View style={styles.postActionContainer}>
+        <View style={styles.postActionMain}>
+          {/* like */}
+          <TouchableOpacity onPress={() => setLike(!like)}>
+            <AntDesign
+              name={like ? 'heart' : 'hearto'}
+              style={[styles.postActionLike, {color: like ? 'red' : 'black'}]}
+            />
+          </TouchableOpacity>
+          {/* chat */}
+          <TouchableOpacity>
+            <Ionic name="chatbubble-outline" style={styles.postActionChat} />
+          </TouchableOpacity>
+          {/* share */}
+          <TouchableOpacity>
+            <Feather name="navigation" style={styles.postActionShare} />
+          </TouchableOpacity>
+        </View>
+        <Feather name="bookmark" style={styles.postActionBookmark} />
       </View>
     </View>
   );
@@ -74,5 +101,31 @@ const styles = StyleSheet.create({
   postImage: {
     width: '100%',
     height: 400,
+  },
+  // Post Action
+  postActionContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 15,
+  },
+  postActionMain: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  postActionBookmark: {
+    fontSize: 20,
+  },
+  postActionLike: {
+    paddingRight: 10,
+    fontSize: 20,
+  },
+  postActionChat: {
+    paddingRight: 10,
+    fontSize: 20,
+  },
+  postActionShare: {
+    fontSize: 20,
   },
 });
