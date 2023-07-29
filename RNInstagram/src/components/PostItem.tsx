@@ -20,8 +20,6 @@ interface IPostItem {
 const PostItem = ({data}: IPostItem) => {
   const [like, setLike] = useState(data.isLiked);
 
-  console.log('like>>>', like);
-
   return (
     <View style={styles.postContainer}>
       {/* Post Header */}

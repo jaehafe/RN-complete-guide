@@ -23,7 +23,6 @@ const statusBarHeight = Platform.OS === 'ios' ? getStatusBarHeight() : 0;
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-console.log('windowWidth>>', windowWidth, windowHeight);
 
 const Search = () => {
   const [image, setImage] = useState<ImageSourcePropType | null>(null);
