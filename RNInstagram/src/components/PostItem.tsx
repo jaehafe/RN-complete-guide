@@ -1,4 +1,11 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, {useState} from 'react';
 import {IPostInfoData} from './Posts';
 
@@ -54,6 +61,27 @@ const PostItem = ({data}: IPostItem) => {
           </TouchableOpacity>
         </View>
         <Feather name="bookmark" style={styles.postActionBookmark} />
+      </View>
+      {/* Post Comments */}
+      <View style={styles.postCommentsContainer}>
+        <Text>좋아요 {like ? data.likes + 1 : data.likes}개</Text>
+        <Text style={styles.postDescriptionText}>게시글이 설명글 Test</Text>
+        <Text style={styles.postCommentsSeeAllButtonText}>댓글 모두 보기</Text>
+        <View style={styles.addCommentsContainer}>
+          <View style={styles.addCommentsWrapper}>
+            <Image
+              source={data.postPersonImage}
+              style={styles.addCommentsAuthorImage}
+            />
+            <TextInput
+              placeholder="댓글 달기..."
+              style={styles.addCommentsTextInput}
+            />
+          </View>
+          <View style={styles.publishButtonContainer}>
+            <Text style={styles.publishButtonText}>게시</Text>
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -127,5 +155,48 @@ const styles = StyleSheet.create({
   },
   postActionShare: {
     fontSize: 20,
+  },
+  postCommentsContainer: {
+    paddingHorizontal: 15,
+  },
+  postDescriptionText: {
+    fontWeight: '700',
+    fontSize: 14,
+    paddingVertical: 2,
+  },
+  // Post Comments
+  postCommentsSeeAllButtonText: {
+    opacity: 0.4,
+    paddingVertical: 2,
+    marginTop: 5,
+    marginBottom: 5,
+  },
+  postCommentsWrapper: {
+    paddingHorizontal: 15,
+  },
+  addCommentsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  addCommentsWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  addCommentsAuthorImage: {
+    width: 25,
+    height: 25,
+    borderRadius: 100,
+    backgroundColor: 'orange',
+    marginRight: 10,
+  },
+  addCommentsTextInput: {
+    opacity: 0.5,
+  },
+  publishButtonContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  publishButtonText: {
+    color: '#0095F6',
   },
 });
