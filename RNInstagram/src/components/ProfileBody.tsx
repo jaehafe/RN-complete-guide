@@ -16,14 +16,14 @@ const ProfileBody = ({
   return (
     <View>
       {accountName ? (
-        <View>
-          <View>
-            <Text>{accountName}</Text>
-            <Feather name="chevron-down" />
+        <View style={styles.meContainer}>
+          <View style={styles.meWrapper}>
+            <Text style={styles.textDesc}>{accountName}</Text>
+            <Feather name="chevron-down" style={styles.dropdownIcon} />
           </View>
-          <View>
-            <Feather name="plus-square" />
-            <Feather name="menu" />
+          <View style={styles.meWrapper}>
+            <Feather name="plus-square" style={styles.plusSquareIcon} />
+            <Feather name="menu" style={styles.menuIcon} />
           </View>
         </View>
       ) : null}
@@ -56,6 +56,29 @@ const ProfileBody = ({
 export default ProfileBody;
 
 const styles = StyleSheet.create({
+  meContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  meWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  dropdownIcon: {
+    fontSize: 20,
+    paddingHorizontal: 5,
+    opacity: 0.5,
+    color: 'black',
+  },
+  plusSquareIcon: {
+    fontSize: 25,
+    color: 'black',
+    paddingHorizontal: 15,
+  },
+  menuIcon: {
+    fontSize: 25,
+  },
   //
   profileImg: {
     resizeMode: 'cover',
