@@ -9,13 +9,13 @@ import React from 'react';
 
 import Ionic from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
+
 import ProfileBody from '../components/ProfileBody';
+import ProfileButton from '../components/ProfileButton';
 
 const FriendProfile = ({route, navigation}: any) => {
   const {name, profileImage, posts, followers, following, accountName} =
     route.params;
-
-  console.log('posts>>', posts);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -38,6 +38,13 @@ const FriendProfile = ({route, navigation}: any) => {
           posts={posts}
           followers={followers}
           following={following}
+        />
+        {/* Profile Button */}
+        <ProfileButton
+          id={1}
+          name={name}
+          accountName={accountName}
+          profileImage={profileImage}
         />
       </View>
     </SafeAreaView>

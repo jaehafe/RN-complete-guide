@@ -13,8 +13,6 @@ const ProfileBody = ({
   followers,
   following,
 }: Omit<IFriendsProfileData, 'follow'>) => {
-  console.log('posts>>>', posts);
-
   return (
     <View>
       {accountName ? (
@@ -58,6 +56,7 @@ const ProfileBody = ({
 export default ProfileBody;
 
 const styles = StyleSheet.create({
+  //
   profileImg: {
     resizeMode: 'cover',
     width: 80,
