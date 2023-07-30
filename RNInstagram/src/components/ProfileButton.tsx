@@ -21,7 +21,7 @@ const ProfileButton = ({
 }: IProfileButton) => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
-  const [follow, setFollow] = useState<boolean | null>(null);
+  const [follow, setFollow] = useState<boolean | null>(false);
 
   return (
     <>
