@@ -30,7 +30,7 @@ const ActivityRecommend = ({data}: IActivityRecommend) => {
                   name: data.name,
                   profileImage: data.profileImage,
                   follow,
-                  post: data.posts,
+                  posts: data.posts,
                   followers: data.followers,
                   following: data.following,
                 })

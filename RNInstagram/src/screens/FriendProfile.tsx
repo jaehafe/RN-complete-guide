@@ -9,20 +9,36 @@ import React from 'react';
 
 import Ionic from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
+import ProfileBody from '../components/ProfileBody';
 
 const FriendProfile = ({route, navigation}: any) => {
-  const {name, profileImage, posts, followers, following} = route.params;
+  const {name, profileImage, posts, followers, following, accountName} =
+    route.params;
+
+  console.log('posts>>', posts);
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.wrapper}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionic name="arrow-back" style={styles.backIcon} />
-        </TouchableOpacity>
-        <View style={styles.profileNameWrapper}>
-          <Text style={styles.profileName}>{name}</Text>
-          <Feather name="more-vertical" style={styles.moreIcon} />
+        {/* Header */}
+        <View style={styles.headerWrapper}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Ionic name="arrow-back" style={styles.backIcon} />
+          </TouchableOpacity>
+          <View style={styles.profileNameWrapper}>
+            <Text style={styles.profileName}>{name}</Text>
+            <Feather name="more-vertical" style={styles.moreIcon} />
+          </View>
         </View>
+        {/* Profile Body */}
+        <ProfileBody
+          name={name}
+          accountName={accountName}
+          profileImage={profileImage}
+          posts={posts}
+          followers={followers}
+          following={following}
+        />
       </View>
     </SafeAreaView>
   );
@@ -37,6 +53,8 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     padding: 10,
+  },
+  headerWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
   },
