@@ -34,9 +34,10 @@ const ProfileButton = ({
                 accountName,
                 profileImage,
               })
-            }>
-            <View>
-              <Text>프로필 수정</Text>
+            }
+            style={styles.meEditProfileButtonContainer}>
+            <View style={styles.meEditProfileButtonWrapper}>
+              <Text style={styles.meEditProfileButtonText}>프로필 수정</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -70,6 +71,29 @@ const ProfileButton = ({
 export default ProfileButton;
 
 const styles = StyleSheet.create({
+  meContainer: {
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+  },
+  meEditProfileButtonContainer: {
+    width: '100%',
+  },
+  meEditProfileButtonWrapper: {
+    width: '100%',
+    height: 35,
+    borderRadius: 5,
+    borderColor: '#DEDEDE',
+    borderWidth: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  meEditProfileButtonText: {
+    fontWeight: 'bold',
+    fontSize: 14,
+    letterSpacing: 1,
+    opacity: 0.8,
+  },
+  //
   container: {
     width: '100%',
     flexDirection: 'row',
